@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /bapi/
+
+RewriteCond %{REQUEST_URI} ^system.*
+RewriteRule ^(.*)$ /index.php?/$1 [L]
+
+RewriteCond %{REQUEST_URI} ^application.*
+RewriteRule ^(.*)$ /index.php?/$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+  # RewriteCond $1 !^(index\.php|images|style|robots\.txt|css|style|docs|js|system)
+ RewriteCond $1 !^(index\.php|images|style|robots\.txt)
+RewriteRule ^(.*)$ index.php?/$1 [L]
+</IfModule>
